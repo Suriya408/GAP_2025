@@ -6,19 +6,19 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      -name: Print
-       run:echo 'build Started & Completed'
+      - name: Print
+        run: echo 'build Started & Completed'
            
   test:
      runs-on: ubuntu-latest
      steps:
-      -name: Print Test - OMS
-       run:echo 'Automation Started for OMS Module'
-      -name: Print Test - PMS
-       run:echo 'Automation Started for Product PMS Module'
+      - name: Print Test - OMS
+        run: echo 'Automation Started for OMS Module'
+      - name: Print Test - PMS
+        run: echo 'Automation Started for Product PMS Module'
 
   deploy:
     runs-on: ubuntu-latest
     steps:
-      -name: Production deployment
-       run:echo 'Production deployment Started & Completed'
+      - name: Production deployment
+        run: echo 'Production deployment Started & Completed'
