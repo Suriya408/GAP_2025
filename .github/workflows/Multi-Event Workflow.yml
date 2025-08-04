@@ -1,0 +1,16 @@
+name: Multi-Event Workflow
+
+on:
+  pull_request:
+    types: [opened, synchronize, closed]
+  issues:
+    types: [opened, closed, assigned, labeled, edited]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  handle-events:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show event type
+        run: echo "Triggered by ${{ github.event_name }}"
