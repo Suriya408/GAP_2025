@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Print
-        run: echo 'build Started & Completed'
+        run: echo 'build Started & Completed '
            
   test:
      runs-on: ubuntu-latest
