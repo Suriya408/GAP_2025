@@ -1,24 +1,14 @@
-name : PushWorkFlow-Dev
 
-on: push dev
+name: Dev Workflow
+
+on:
+  push:
+    branches:
+      - dev
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - name: Print
-        run: echo 'build Started & Completed'
-           
-  test:
-     runs-on: ubuntu-latest
-     steps:
-      - name: Print Test - OMS
-        run: echo 'Automation Started for OMS Module'
-      - name: Print Test - PMS
-        run: echo 'Automation Started for Product PMS Module'
-
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Production deployment
-        run: echo 'Production deployment Started & Completed'
+        run: echo 'Build Started & Completed'
