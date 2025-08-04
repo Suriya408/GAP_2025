@@ -1,9 +1,7 @@
 name : PushWorkFlow
 
-on:
-  push:
-    branches:
-      - dev
+on: push
+
 
 jobs:
   build:
