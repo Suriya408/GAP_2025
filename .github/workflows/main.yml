@@ -18,7 +18,7 @@ jobs:
        run:echo 'Automation Started for Product PMS Module'
 
   deploy:
-     runs-on: ubuntu-latest
-      steps:
+    runs-on: ubuntu-latest
+    steps:
       -name: Production deployment
        run:echo 'Production deployment Started & Completed'
