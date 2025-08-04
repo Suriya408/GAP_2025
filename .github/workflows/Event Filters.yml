@@ -1,0 +1,20 @@
+
+name: Full Workflow
+
+
+on:
+  push:
+    branches:
+      - main
+      - 'HOTFIX/*'
+    branches-ignore:
+      - 'dev-*'
+    tags:
+      - 'v*'
+    tags-ignore:
+      - 'beta*'
+    paths:
+      - 'src/**'
+      - 'docs/**'
+    paths-ignore:
+      - 'tests/**'
