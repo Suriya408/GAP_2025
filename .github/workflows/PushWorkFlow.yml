@@ -11,6 +11,12 @@ on:
       - opened
       - edited
       - closed
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - closed
+
 jobs:
   build:
     runs-on: windows-latest
