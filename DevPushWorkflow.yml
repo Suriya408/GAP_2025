@@ -11,4 +11,4 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Print
-        run: echo 'DEV Build Started & Completed 100 %'
+        run: echo 'DEV Build Started & Completed 100 %1'
