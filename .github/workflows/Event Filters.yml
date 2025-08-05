@@ -16,3 +16,23 @@ on:
       - 'docs/**'
     paths-ignore:
       - 'tests/**'
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Print
+        run: echo 'build Started & Completed'
+           
+  test:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Print Test - OMS
+        run: echo 'Event Filters Started'
+      - name: Print Test - PMS
+        run: echo 'Event Filters Ended'
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Production deployment
+        run: echo 'Production deployment Started & Completed for branch main / HF'
