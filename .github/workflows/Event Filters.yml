@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - main
-      - 'HOTFIX/*'
     branches-ignore:
-      - 'dev-*'
+      - dev
     tags:
       - 'v*'
     tags-ignore:
