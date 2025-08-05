@@ -6,13 +6,9 @@ on:
       - dev
     tags:
       - 'v*'
-    tags-ignore:
-      - 'beta*'
     paths:
       - 'src/**'
       - 'docs/**'
-    paths-ignore:
-      - 'tests/**'
 jobs:
   build:
     runs-on: windows-latest
