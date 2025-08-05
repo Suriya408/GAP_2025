@@ -1,7 +1,7 @@
 name: Manual Workflow with Expression
 
 on:
-  workflow_dispatch:  # Allows manual triggering from GitHub UI
+  workflow_dispatch: 
 
 jobs:
   run-manual-check:
@@ -11,7 +11,7 @@ jobs:
         run: |
           COMMENT_STATUS="failed"
           if [ "$COMMENT_STATUS" == "failed" ]; then
-            echo "❌ There was a problem saving your comment. Please try again."
+            echo "There was a problem saving your comment. Please try again."
           else
-            echo "✅ Comment saved successfully."
+            echo "Comment saved successfully."
           fi
