@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Deployment environment'
+        description: 'Test Deployment environment'
         required: true
         default: 'staging'
       version:
