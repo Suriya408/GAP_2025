@@ -4,21 +4,14 @@ on:
   workflow_dispatch:  
 
 jobs:
-  comment-check:
+  example:
     runs-on: ubuntu-latest
-    env:
-      COMMENT_STATUS: failed  
-
     steps:
       - name: Define and use a shell function
         run: |
-          check_comment_status() {
-            if [ "$COMMENT_STATUS" == "failed" ]; then
-              echo "There was a problem saving your comment. Please try again."
-            else
-              echo "Comment saved successfully."
-            fi
+          greet_user() {
+            echo "Hello, $1!"
           }
 
-          echo "Running comment status check..."
-          check_comment_status
+          greet_user "Suriya"
+
