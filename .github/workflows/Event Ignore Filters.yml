@@ -1,0 +1,30 @@
+name: Event Ignore Filters
+
+on:
+  push:
+    branches-ignore:
+      - dev
+    tags-ignore:
+      - 'v*'
+    paths-ignore:
+      - 'tests/**'
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Print
+        run: echo 'build Started & Completed'
+           
+  test:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Print Test - OMS
+        run: echo 'Event Ignore Filters Started'
+      - name: Print Test - PMS
+        run: echo 'Event Ignore Filters Ended'
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Production deployment
+        run: echo 'Production deployment Started & Completed'
