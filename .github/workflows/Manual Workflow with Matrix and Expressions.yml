@@ -1,0 +1,21 @@
+name: Manual Workflow with Matrix and Expressions
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  comment-check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        status: [success, failed]  
+
+    steps:
+      - name: Check comment status
+        run: |
+          echo "Checking comment status: ${{ matrix.status }}"
+          if [ "${{ matrix.status }}" == "failed" ]; then
+            echo "There was a problem saving your comment. Please try again."
+          else
+            echo "Comment saved successfully."
+          fi
