@@ -1,4 +1,4 @@
-name: Full Workflow
+name: Event Filters
 
 on:
   push:
