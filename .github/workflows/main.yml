@@ -1,0 +1,24 @@
+name: Manual Workflow with Functions
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  comment-check:
+    runs-on: ubuntu-latest
+    env:
+      COMMENT_STATUS: failed  
+
+    steps:
+      - name: Define and use a shell function
+        run: |
+          check_comment_status() {
+            if [ "$COMMENT_STATUS" == "failed" ]; then
+              echo "There was a problem saving your comment. Please try again."
+            else
+              echo "Comment saved successfully."
+            fi
+          }
+
+          echo "Running comment status check..."
+          check_comment_status
