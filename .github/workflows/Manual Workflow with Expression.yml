@@ -1,0 +1,17 @@
+name: Manual Workflow with Expression
+
+on:
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
+
+jobs:
+  run-manual-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set a condition
+        run: |
+          COMMENT_STATUS="failed"
+          if [ "$COMMENT_STATUS" == "failed" ]; then
+            echo "❌ There was a problem saving your comment. Please try again."
+          else
+            echo "✅ Comment saved successfully."
+          fi
