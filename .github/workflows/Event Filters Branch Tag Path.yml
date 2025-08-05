@@ -2,7 +2,8 @@ name: Event Filters
 
 on:
   push:
-    branches-ignore:
+    branches:
+      - main
       - dev
     tags:
       - 'v*'
