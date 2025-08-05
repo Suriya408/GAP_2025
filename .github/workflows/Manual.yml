@@ -9,7 +9,7 @@ on:
         default: 'staging'
       version:
         description: 'Version to deploy'
-        required: false
+        required: true
 
 jobs:
   manual-job:
