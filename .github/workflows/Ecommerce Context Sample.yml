@@ -1,0 +1,42 @@
+name: Ecommerce Context Sample
+
+on:
+  push:
+    branches: [main]
+
+env:
+  GLOBAL_ENV: production
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        service: [cart, payment, inventory, user]
+    runs-on: ubuntu-latest
+    outputs:
+      test-status: ${{ steps.set-output.outputs.status }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        run: |
+          echo "Running tests for ${{ matrix.service }}"
+          # Simulate test result
+          echo "::set-output name=status::success"
+        id: set-output
+
+  deploy:
+    needs: test
+    if: needs.test.outputs.test-status == 'success'
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_ENV: ${{ vars.DEPLOY_ENV }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy service
+        run: |
+          echo "Deploying services to $DEPLOY_ENV"
+          echo "Using secret: ${{ secrets.DEPLOY_KEY }}"
