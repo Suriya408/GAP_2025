@@ -10,11 +10,8 @@ jobs:
       uses: actions/setup-python@v5.6.0
       with:
         python-version:  python-version
-        python-version-file:  python-version
-        cache: pip, pipenv, poetry
-        architecture: The target architecture (x86, x64, arm64) of the Python or PyPy interpreter.
-        check-latest: Set this option if you want the action to check for the latest available version that satisfies the version spec.
-        token:  default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
-        cache-dependency-path: Used to specify the path to dependency files. Supports wildcards or a list of file names for caching multiple dependencies.
-        update-environment: default is true
-        allow-prereleases: When 'true', a version range passed to 'python-version' input will match prerelease versions if no GA versions are found. Only 'x.y' version range is supported for CPython.
+        architecture: 'x64'
+        check-latest: true
+        update-environment: true
+        allow-prereleases: false
+        cache: 'pip'
