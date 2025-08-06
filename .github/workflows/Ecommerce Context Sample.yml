@@ -1,8 +1,7 @@
 name: Ecommerce Context Sample
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 env:
   GLOBAL_ENV: production
