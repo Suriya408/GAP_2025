@@ -1,0 +1,14 @@
+name : Setup Python
+on:   
+  workflow_dispatch: 
+jobs:
+  java-setup:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Phylum Analyze PR
+      uses: phylum-dev/phylum-analyze-pr-action@v2.1.1
+      with:
+        github_token:  default is ${{ github.token }}
+        phylum_token:  The phylum-ci command line to pass to the Docker container's entrypoint
+        cmd:  default is phylum-ci
