@@ -9,7 +9,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v5.6.0
       with:
-        python-version:  python-version
+        python-version:  '3.11'  
         architecture: 'x64'
         check-latest: true
         update-environment: true
