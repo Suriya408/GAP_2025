@@ -1,0 +1,20 @@
+name : Setup Node JS
+on:   
+  workflow_dispatch: 
+jobs:
+  java-setup:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.9.1
+      with:
+        node-version: '18'              # Specify Node.js version
+        architecture: 'x64'             # Options: x64, x86
+        check-latest: true              # Always get the latest patch version
+        cache: 'npm'                    # Cache dependencies for faster builds
+        registry-url: 'https://registry.npmjs.org'  # Set custom registry if needed
+        scope: '@your-scope'            # Optional: for scoped packages
+        always-auth: true               # Always authenticate with registry
+        token: ${{ secrets.NPM_TOKEN }} # Use secret for private packages
+
