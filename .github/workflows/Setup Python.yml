@@ -14,4 +14,3 @@ jobs:
         check-latest: true
         update-environment: true
         allow-prereleases: false
-        cache: 'pip'
