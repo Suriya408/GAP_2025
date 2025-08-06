@@ -6,9 +6,15 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-    - name: Phylum Analyze PR
-      uses: phylum-dev/phylum-analyze-pr-action@v2.1.1
+    - name: Setup Python
+      uses: actions/setup-python@v5.6.0
       with:
-        github_token:  default is ${{ github.token }}
-        phylum_token:  The phylum-ci command line to pass to the Docker container's entrypoint
-        cmd:  default is phylum-ci
+        python-version:  python-version
+        python-version-file:  python-version
+        cache: pip, pipenv, poetry
+        architecture: The target architecture (x86, x64, arm64) of the Python or PyPy interpreter.
+        check-latest: Set this option if you want the action to check for the latest available version that satisfies the version spec.
+        token:  default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
+        cache-dependency-path: Used to specify the path to dependency files. Supports wildcards or a list of file names for caching multiple dependencies.
+        update-environment: default is true
+        allow-prereleases: When 'true', a version range passed to 'python-version' input will match prerelease versions if no GA versions are found. Only 'x.y' version range is supported for CPython.
