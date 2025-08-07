@@ -36,8 +36,11 @@ jobs:
           echo "Repository Details: ${{ github.repository }}" # Using github
           echo "Repository OwnerName: ${{ github.repository_owner }}" # Using github
           echo "Repository URL: ${{ github.repositoryUrl }}" # Using github
-          echo "Repository Run Attempt: ${{ github.run_attempt }}" # Using github
+          echo "Repository Run Attempt - each rerun incremented: ${{ github.run_attempt }}" # Using github
+          echo "Repository Run - each new run incremented:  ${{ github.run_number }}" # Using github
+          echo "Repository Run Id :  ${{ github.run_id }}" # Using github
           echo "Repository Server Url: ${{ github.server_url }}" # Using github
           echo "Work space :  ${{ github.workspace }}" # Using github
+          
 
           
