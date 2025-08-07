@@ -1,0 +1,38 @@
+name: Git Event Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  on-push:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run build on push
+        run: echo "Running build for push event on ${{ github.ref }}"
+
+  on-pull-request:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run tests for PR
+        run: echo "Running tests for pull request #${{ github.event.pull_request.number }}"
+
+  on-manual-trigger:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Manual trigger
+        run: echo "Workflow manually triggered"
