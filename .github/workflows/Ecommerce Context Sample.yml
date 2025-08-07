@@ -15,12 +15,11 @@ jobs:
     outputs:
       test-status: ${{ steps.set-output.outputs.status }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
       - name: Run tests
-        run: |
-          echo "Running tests for ${{ matrix.service }}"
+        run:  echo "Running tests for ${{ matrix.service }}"
+
+      - id: set-output
+        run:  echo "status="success" >> $GITHUB_OUTPUT
           
   deploy:
     needs: test      # Using needs
@@ -29,9 +28,6 @@ jobs:
     env:
       DEPLOY_ENV: ${{ vars.DEPLOY_ENV }} #Using vars
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
       - name: Deploy service
         run: |
           echo "Deploying services to $DEPLOY_ENV"
