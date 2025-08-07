@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
 
 env:
-  GLOBAL_ENV: production
+  GLOBAL_ENV: production # Using env
 
 jobs:
   test:
     strategy:
       matrix:
-        service: [cart, payment, inventory, user]
+        service: [cart, payment, inventory, user]  # Using matrix
     runs-on: ubuntu-latest
     outputs:
       test-status: ${{ steps.set-output.outputs.status }}
@@ -21,16 +21,13 @@ jobs:
       - name: Run tests
         run: |
           echo "Running tests for ${{ matrix.service }}"
-          # Simulate test result
-          echo "::set-output name=status::success"
-        id: set-output
-
+          
   deploy:
-    needs: test
-    if: needs.test.outputs.test-status == 'success'
+    needs: test      # Using needs
+    if: needs.test.outputs.test-status == 'success' # Using needs and outputs
     runs-on: ubuntu-latest
     env:
-      DEPLOY_ENV: ${{ vars.DEPLOY_ENV }}
+      DEPLOY_ENV: ${{ vars.DEPLOY_ENV }} #Using vars
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -38,4 +35,11 @@ jobs:
       - name: Deploy service
         run: |
           echo "Deploying services to $DEPLOY_ENV"
-          echo "Using secret: ${{ secrets.DEPLOY_KEY }}"
+          echo "Using secret: ${{ secrets.DEPLOY_KEY }}" #Using secrets
+          echo "Repository Details: ${{ github.repository }}" # Using github
+          echo "Repository OwnerName: ${{ github.repository_owner }}" # Using github
+          echo "Repository URL: ${{ github.repositoryUrl }}" # Using github
+          echo "Repository Run Attempt: ${{ github.run_attempt }}" # Using github
+          echo "Repository Server Url: ${{ github.server_url }}" # Using github
+
+          
