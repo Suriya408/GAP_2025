@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Deploy service
         run: |
-          echo "Current Version : ${{ CURVERSION  }}" #Using Local variable
+          echo "Current Version : $CURVERSION" #Using Local variable
           echo "Deploying services to $DEPLOY_ENV"   #Using Local variable
           echo "Using secret: ${{ secrets.DEPLOY_KEY }}" #Using secrets
           echo "Repository Details: ${{ github.repository }}" # Using github
