@@ -1,4 +1,4 @@
-name: Matrix with Index and Total
+name: Matrix with Java Versions and Fail-Fast
 
 on:
   workflow_dispatch:
@@ -10,25 +10,32 @@ jobs:
       matrix:
         include:
           - service: cart
-            environment: dev
+            java: 17
             index: 0
             total: 4
           - service: cart
-            environment: production
+            java: 21
             index: 1
             total: 4
           - service: payment
-            environment: dev
+            java: 17
             index: 2
             total: 4
           - service: payment
-            environment: production
+            java: 21
             index: 3
             total: 4
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Java ${{ matrix.java }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java }}
+
       - name: Show matrix info
         run: |
-          echo "Running test for service: ${{ matrix.service }}"
-          echo "Environment: ${{ matrix.environment }}"
+          echo "Service: ${{ matrix.service }}"
+          echo "Java Version: ${{ matrix.java }}"
           echo "Index: ${{ matrix.index }} of ${{ matrix.total }}"
+          java -version
