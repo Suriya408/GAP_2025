@@ -26,17 +26,18 @@ jobs:
     if: needs.test.outputs.test-status == 'success' # Using needs and outputs
     runs-on: ubuntu-latest
     env:
-      DEPLOY_ENV: ${{ vars.DEPLOY_ENV }} #Using vars
+      DEPLOY_ENV: ${{ vars.DEPLOY_ENV }} #Using vars - value assigned in repo global
     steps:
       - name: Deploy service
         run: |
           echo "Current Version : $CURVERSION" #Using Local variable
           echo "Deploying services to $DEPLOY_ENV"   #Using Local variable
-          echo "Using secret: ${{ secrets.DEPLOY_KEY }}" #Using secrets
+          echo "Using secret: ${{ secrets.DEPLOY_KEY }}" #Using secrets - value assigned in repo global
           echo "Repository Details: ${{ github.repository }}" # Using github
           echo "Repository OwnerName: ${{ github.repository_owner }}" # Using github
           echo "Repository URL: ${{ github.repositoryUrl }}" # Using github
           echo "Repository Run Attempt: ${{ github.run_attempt }}" # Using github
           echo "Repository Server Url: ${{ github.server_url }}" # Using github
+          echo "Work space :  ${{ github.workspace }}" # Using github
 
           
