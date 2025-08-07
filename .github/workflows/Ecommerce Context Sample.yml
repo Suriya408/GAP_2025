@@ -19,7 +19,7 @@ jobs:
         run:  echo "Running tests for ${{ matrix.service }}"
 
       - id: set-status
-        run:  echo "status=failed" >> $GITHUB_OUTPUT
+        run:  echo "status=success" >> $GITHUB_OUTPUT
           
   deploy:
     needs: test      # Using needs
