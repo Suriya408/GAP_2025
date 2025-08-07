@@ -13,12 +13,12 @@ jobs:
         service: [cart, payment, inventory, user]  # Using matrix
     runs-on: ubuntu-latest
     outputs:
-      test-status: ${{ steps.set-output.outputs.status }}
+      test-status: ${{ steps.set-status.outputs.status }}
     steps:
       - name: Run tests
         run:  echo "Running tests for ${{ matrix.service }}"
 
-      - id: set-output
+      - id: set-status
         run:  echo "status=success" >> $GITHUB_OUTPUT
           
   deploy:
