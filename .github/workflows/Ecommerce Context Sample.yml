@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  GLOBAL_ENV: production # Using env
+  CURRENT VERSION: V_2025_Q2_R1.1 # Using env local variable
 
 jobs:
   test:
@@ -30,7 +30,8 @@ jobs:
     steps:
       - name: Deploy service
         run: |
-          echo "Deploying services to $DEPLOY_ENV"
+          echo "Current Version : ${{ CURRENT_VERSION  }}" #Using Local variable
+          echo "Deploying services to $DEPLOY_ENV"   #Using Local variable
           echo "Using secret: ${{ secrets.DEPLOY_KEY }}" #Using secrets
           echo "Repository Details: ${{ github.repository }}" # Using github
           echo "Repository OwnerName: ${{ github.repository_owner }}" # Using github
