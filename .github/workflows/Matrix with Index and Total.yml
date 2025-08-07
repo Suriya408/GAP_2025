@@ -1,0 +1,34 @@
+name: Matrix with Index and Total
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - service: cart
+            environment: dev
+            index: 0
+            total: 4
+          - service: cart
+            environment: staging
+            index: 1
+            total: 4
+          - service: payment
+            environment: dev
+            index: 2
+            total: 4
+          - service: payment
+            environment: staging
+            index: 3
+            total: 4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show matrix info
+        run: |
+          echo "Running test for service: ${{ matrix.service }}"
+          echo "Environment: ${{ matrix.environment }}"
+          echo "Index: ${{ matrix.index }} of ${{ matrix.total }}"
