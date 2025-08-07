@@ -6,7 +6,7 @@ on:
 jobs:
   test:
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         include:
           - service: cart
@@ -14,7 +14,7 @@ jobs:
             index: 0
             total: 4
           - service: cart
-            environment: staging
+            environment: production
             index: 1
             total: 4
           - service: payment
@@ -22,7 +22,7 @@ jobs:
             index: 2
             total: 4
           - service: payment
-            environment: staging
+            environment: production
             index: 3
             total: 4
     runs-on: ubuntu-latest
