@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  CURRENT VERSION: V_2025_Q2_R1.1 # Using env local variable
+  CURRENT_VERSION: V_2025_Q2_R1.1 # Using env local variable
 
 jobs:
   test:
