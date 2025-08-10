@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
       - dev
       - test
       - staging
@@ -11,6 +12,7 @@ on:
   pull_request:
     branches:
       - main
+      - develop
 
 env:
   MAVEN_OPTS: "-Xmx1024m"
@@ -28,16 +30,17 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: ${{ env.JAVA_VERSION }}
-          distribution: 'temurin'
+          distribution: 'microsoft'
 
       - name: Build with Maven
-        run: mvn clean install
-
+        run: mvn --batch-mode --update-snapshots verify
+      - run: mkdir staging && cp target/*.jar staging
+      
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: app-artifact
-          path: target/*.jar
+          path: staging
 
   test:
     needs: build
